@@ -15,7 +15,7 @@ const adRouter = require('./routes/AdApi');
 const chatsRouter = require('./routes/chatApi.js');
 const categoryRouter = require('./routes/CategoryApi.js');
 const categoryDetailRouter = require('./routes/CategoryDetailApi.js');
-
+ 
 
 var app = express();
 
