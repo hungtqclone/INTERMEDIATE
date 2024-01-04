@@ -15,11 +15,15 @@ const adRouter = require('./routes/AdApi');
 const chatsRouter = require('./routes/chatApi.js');
 const categoryRouter = require('./routes/CategoryApi.js');
 const categoryDetailRouter = require('./routes/CategoryDetailApi.js');
- 
+
 
 var app = express();
 
 require('./config/DBConnection')
+
+const swaggerUi = require('swagger-ui-express');
+const swaggerDocument = require('./swagger.json');
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -31,9 +35,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.get('/', (req, res) => {
-  res.send("hello world");
-});
+// app.get('/', (req, res) => {
+//   res.send("hello world");
+// });
+app.use('/', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 //tạo đường dẫn tới file trong router
 app.use('/api', testRouter);
